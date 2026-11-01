@@ -1,0 +1,14 @@
+services:
+  homeworkout:
+    build: .
+    image: homeworkout-web
+    container_name: homeworkout
+    restart: unless-stopped
+    # Localhost only; phones reach it through `tailscale serve`, not the LAN.
+    ports:
+      - "127.0.0.1:3050:3000"
+    volumes:
+      - homeworkout-data:/data
+
+volumes:
+  homeworkout-data:

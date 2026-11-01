@@ -1,0 +1,106 @@
+@import "tailwindcss";
+
+/* Application color palette. */
+:root {
+  --canvas: #f3f4f2;
+  --surface: #ffffff;
+  --ink: #15181a;
+  /* Text drawn on an ink-filled surface. */
+  --on-ink: #ffffff;
+  --muted: #6b7176;
+  --line: #e1e3e0;
+  --muscle-idle: #d5d8d4;
+  --body-base: #e8eae7;
+  --good: #1f8a5b;
+  --rest: #3d689e;
+  --accent: #e8432b;
+  color-scheme: light;
+}
+
+:root[data-theme="dark"] {
+  --canvas: #0f1113;
+  --surface: #1a1d20;
+  --ink: #eef0ee;
+  --on-ink: #15181a;
+  --muted: #9aa0a5;
+  --line: #2c3034;
+  --muscle-idle: #3a3f44;
+  --body-base: #262a2e;
+  --good: #3fbf86;
+  --rest: #7aa3db;
+  color-scheme: dark;
+}
+
+:root[data-accent="magenta"] { --accent: #d3246b; }
+:root[data-accent="violet"] { --accent: #6e44e0; }
+:root[data-accent="cobalt"] { --accent: #2f5bea; }
+:root[data-accent="pine"] { --accent: #1f6f78; }
+
+:root {
+  --accent-soft: color-mix(in srgb, var(--accent) 38%, transparent);
+}
+
+@theme inline {
+  --color-canvas: var(--canvas);
+  --color-surface: var(--surface);
+  --color-ink: var(--ink);
+  --color-on-ink: var(--on-ink);
+  --color-muted: var(--muted);
+  --color-line: var(--line);
+  --color-good: var(--good);
+  --color-rest: var(--rest);
+  --color-accent: var(--accent);
+  --color-accent-soft: var(--accent-soft);
+  --font-sans: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  --font-display: var(--font-condensed), system-ui, sans-serif;
+}
+
+html,
+body {
+  background: var(--canvas);
+  color: var(--ink);
+}
+
+body {
+  -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
+}
+
+button:not(:disabled),
+[role="button"],
+summary,
+label {
+  cursor: pointer;
+}
+
+/* Theme.display: heavy compressed numerals and headlines. */
+.font-display {
+  font-family: var(--font-display);
+  font-weight: 800;
+  line-height: 0.95;
+}
+
+/* Theme.title: bold condensed section titles. */
+.font-title {
+  font-family: var(--font-display);
+  font-weight: 700;
+  line-height: 1.05;
+}
+
+.tabular {
+  font-variant-numeric: tabular-nums;
+}
+
+.no-scrollbar {
+  scrollbar-width: none;
+}
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+.pb-safe {
+  padding-bottom: max(0.5rem, env(safe-area-inset-bottom));
+}
+.pt-safe {
+  padding-top: max(0.5rem, env(safe-area-inset-top));
+}
